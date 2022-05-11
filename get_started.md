@@ -12,19 +12,23 @@ comprised of an ordered and numerically indexed list of data
 
 #### Function declaration
 
-###### Function () {}
+```
+function () {}
 
-###### function \*two() { }
+function \*two() { }
 
-###### export function five() { }
+export function five() { }
+```
 
 #### Function expression
 
-###### var func = function () {}
+```
+var func = function () {}
 
-###### (function(){ })();
+(function(){ })();
 
-###### f = () => {}
+f = () => {}
+```
 
 #### Function expression vs Function declaration
 
@@ -38,13 +42,15 @@ comprised of an ordered and numerically indexed list of data
 3. == allows type conversions first, it convert to number and then compare.
 4. ( <, >, <=, >= ) also act like == operator.
 
-###### 32 == '32' // true
+```
+32 == '32' // true
 
-###### 32 === '32' // false
+32 === '32' // false
 
-###### '' == 0 //ture
+'' == 0 //ture
 
-###### '' == false // true
+'' == false // true
+```
 
 ### How we organize in JS
 
@@ -63,9 +69,11 @@ Object.create(null) creates an object that is not prototype linked anywhere
 when we use Object.create , it copies the prototype chain from the original object.it shallow copy properties
 when we use Object.assign , it not copies the prototype chain from the original object.it deep copy properties
 
-###### const a = {b: 'b'}; const c = Object.create(a); c.b = 'd'; console.log(a.b); // 'b' console.log(c.b); // 'd';
+```
+const a = {b: 'b'}; const c = Object.create(a); c.b = 'd'; console.log(a.b); // 'b' console.log(c.b); // 'd';
 
-###### const a = {b: 'b'}; const c = Object.create(a); a.b = 'd'; console.log(a.b); // 'd' console.log(c.b); // 'd';
+const a = {b: 'b'}; const c = Object.create(a); a.b = 'd'; console.log(a.b); // 'd' console.log(c.b); // 'd';
+```
 
 ## Chapter 4: The Bigger Picture
 
