@@ -45,7 +45,6 @@ function a()
     }
 }
 // Every inner level can access its outer levels.
-
 ```
 
 ### A Converstion Among Friends
@@ -63,3 +62,61 @@ The first thing Compiler will do with this program is perform lexing to break it
 
 One of the key aspects of lexical scope is that any time an identifier reference cannot be found in the current scope, the next outer scope in the nesting is consulted; that process is repeated until an answer is found or there are no more scopes to consult.
 when js engine ask scope manager, variable and scop manager can not locate variable, scope manager in non-strict-mode create variable with undefind value. in stric-mode scope manager throw ReferenceError.
+
+## Chapter 3:The Scope Chain
+
+### Lookup Is (Mostly) Conceptual
+
+Consider a reference to a variable that isn’t declared in any lexically available scopes in the current file, asserts that each file is its own separate program from the perspective of JS compilation. If no declaration is found, that’s not necessarily an error. Another file (program) in the runtime may indeed declare that variable in the shared global scope.
+
+### Backing Out
+
+When a function (declaration or expression) is defined, a new scope is created.
+
+## Chapter 4: Around the Global Scope
+
+### Where Exactly is this Global Scope?
+
+#### Globals Shadowing Globals
+
+The let declaration adds a something global variable but not a global object property.
+
+a global object property can be shadowed by a global variable.
+
+```
+window.something = 42;
+let something = "Kyle";
+console.log(something);
+// Kyle
+console.log(window.something);
+// 42
+```
+
+#### DOM Globals
+
+a DOM element with an id attribute automatically creates a global variable that references it.
+
+```
+<ul id="my-todo-list">
+<li id="first">Write a book</li>
+..
+</ul>
+```
+
+```
+first;
+// <li id="first">..</li>
+
+window["my-todo-list"];
+// <ul id="my-todo-list">..</ul>
+```
+
+If the id value is a valid lexical name (like first ), the lexical variable is created. If not, the only way to access that global is through the global object ( window[..] ).
+
+#### Web Workers
+
+Web Workers are a web platform extension on top of browser JS behavior, which allows a JS file to run in a completely separate thread (operating system wise) from the thread that’s running the main JS program.
+
+Web Worker code does not have access to the DOM.
+
+Since a Web Worker is treated as a wholly separate program, it does not share the global scope with the main JS program.
