@@ -326,3 +326,5 @@ Do you spot the problem? Our i is indeed just created once inside the loop. That
 The TDZ is the time window where a variable exists but is still uninitialized, and therefore cannot be accessed in any way.
 
 A var also has technically has a TDZ, but it’s zero in length and thus unobservable to our programs! Only let and const have an observable TDZ.
+
+## Chapter 6: Limiting Scope Exposure
